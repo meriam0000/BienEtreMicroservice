@@ -9,7 +9,5 @@ public class PostCreatedEvent {
     private String postId;
     private String authorId;
     private String content;
-    private String departmentId;
-    private boolean isCompanyWide;
     private LocalDateTime createdAt;
 }

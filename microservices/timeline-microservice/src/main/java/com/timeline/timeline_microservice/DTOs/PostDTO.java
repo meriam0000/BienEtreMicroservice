@@ -11,9 +11,6 @@ public class PostDTO {
     private String authorId;
     private String authorName;  // Added to display user's name
     private String content;
-    private String departmentId;
-    private String departmentName;  // Added to display department name
-    private boolean isCompanyWide;
     private int commentCount;
     private long likeCount;
     private long dislikeCount;
@@ -27,9 +24,6 @@ public class PostDTO {
         String authorId,
         String authorName,
         String content,
-        String departmentId,
-        String departmentName,
-        boolean isCompanyWide,
         int commentCount,
         long likeCount,
         long dislikeCount,
@@ -41,9 +35,6 @@ public class PostDTO {
         this.authorId = authorId;
         this.authorName = authorName;
         this.content = content;
-        this.departmentId = departmentId;
-        this.departmentName = departmentName;
-        this.isCompanyWide = isCompanyWide;
         this.commentCount = commentCount;
         this.likeCount = likeCount;
         this.dislikeCount = dislikeCount;

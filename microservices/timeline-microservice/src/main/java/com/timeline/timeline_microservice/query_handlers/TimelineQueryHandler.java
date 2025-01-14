@@ -25,7 +25,6 @@ import lombok.RequiredArgsConstructor;
 public class TimelineQueryHandler {
     private final PostRepository postRepository;
     private final UserService userService;
-    private final DepartmentService departmentService;
     
     public Page<PostDTO> handle(GetTimelineQuery query) {
         Pageable pageable = PageRequest.of(query.getPage(), query.getSize(), 
@@ -41,7 +40,6 @@ public class TimelineQueryHandler {
     private PostDTO toDTO(Post post, String currentUserId) {
         // Fetch additional data
         String authorName = userService.getUserName(post.getAuthorId());
-        String departmentName = departmentService.getDepartmentName(post.getDepartmentId());
         
         // Calculate reactions
         long likeCount = post.getReactions().stream()
@@ -69,9 +67,6 @@ public class TimelineQueryHandler {
             post.getAuthorId(),        // authorId
             authorName,                // authorName
             post.getContent(),         // content
-            post.getDepartmentId(),    // departmentId
-            departmentName,            // departmentName
-            post.isCompanyWide(),      // isCompanyWide
             post.getComments().size(), // commentCount
             likeCount,                 // likeCount
             dislikeCount,              // dislikeCount

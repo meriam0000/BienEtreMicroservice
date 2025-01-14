@@ -19,8 +19,6 @@ public class Post {
     private String id;
     private String authorId;
     private String content;
-    private String departmentId;
-    private boolean isCompanyWide;
     private LocalDateTime createdAt;
     
     @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)

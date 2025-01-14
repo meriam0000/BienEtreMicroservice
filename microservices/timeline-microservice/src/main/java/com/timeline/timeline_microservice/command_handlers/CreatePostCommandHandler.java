@@ -26,8 +26,6 @@ public class CreatePostCommandHandler {
         post.setId(UUID.randomUUID().toString());
         post.setAuthorId(command.getAuthorId());
         post.setContent(command.getContent());
-        post.setDepartmentId(command.getDepartmentId());
-        post.setCompanyWide(command.isCompanyWide());
         post.setCreatedAt(LocalDateTime.now());
         
         postRepository.save(post);
@@ -36,8 +34,6 @@ public class CreatePostCommandHandler {
             post.getId(),
             post.getAuthorId(),
             post.getContent(),
-            post.getDepartmentId(),
-            post.isCompanyWide(),
             post.getCreatedAt()
         ));
         
