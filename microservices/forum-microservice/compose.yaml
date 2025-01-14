@@ -1,0 +1,31 @@
+version: "3.8"
+
+services:
+  product_microservice_db:
+    image: mysql:8.0
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: forum_database
+    ports:
+      - "3306:3306" # Expose MySQL port
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - my_network  # Define a custom network
+
+  axonserver:
+    image: axoniq/axonserver:latest
+    environment:
+      - "AXONIQ_AXONSERVER_STANDALONE=TRUE"
+    ports:
+      - "8024:8024"
+      - "8124:8124"
+    networks:
+      - my_network  # Ensure both services share the same network
+
+networks:
+  my_network:
+    driver: bridge  # Default bridge network or overlay network if necessary
+
+volumes:
+  db_data:
