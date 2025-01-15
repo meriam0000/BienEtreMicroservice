@@ -1,34 +1,31 @@
-package org.example.forummicroservice.Entities;
+package org.example.forummicroservice.events;
 
-import jakarta.persistence.*;
-
-import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Entity
-public class Article implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+public class ArticleCreatedEvent {
+    private Long articleId;
     private String title;
     private String content;
-
-    @ElementCollection
-    private List<String> tags; // Tags for recommending subjects
-
-    private String authorId; // Reference to the employee posting the article
-
+    private List<String> tags;
+    private String authorId;
     private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 
-    public Long getId() {
-        return id;
+    public ArticleCreatedEvent(Long articleId, String title, String content, List<String> tags, String authorId, LocalDateTime createdAt, Object o) {
+        this.articleId = articleId;
+        this.title = title;
+        this.content = content;
+        this.tags = tags;
+        this.authorId = authorId;
+        this.createdAt = createdAt;
     }
 
-    public void setId(Long id) {
-        this.id = id;
+    public Long getArticleId() {
+        return articleId;
+    }
+
+    public void setArticleId(Long articleId) {
+        this.articleId = articleId;
     }
 
     public String getTitle() {
@@ -70,13 +67,4 @@ public class Article implements Serializable {
     public void setCreatedAt(LocalDateTime createdAt) {
         this.createdAt = createdAt;
     }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 }
-

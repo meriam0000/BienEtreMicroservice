@@ -1,11 +1,11 @@
 version: "3.8"
 
 services:
-  product_microservice_db:
+  bien_etre_db:
     image: mysql:8.0
     environment:
       MYSQL_ROOT_PASSWORD: root
-      MYSQL_DATABASE: forum_database
+      MYSQL_DATABASE: bien_etre_cqrs
     ports:
       - "3306:3306" # Expose MySQL port
     volumes:
