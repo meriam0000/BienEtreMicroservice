@@ -10,6 +10,8 @@
         <module>eureka-server</module>
         <module>spring-config</module>
         <module>gateway-service</module>
+        <module>Evenement</module>
+
     </modules>
 
     <properties>
